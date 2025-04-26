@@ -77,29 +77,30 @@
     </div>
 
     <script>
-    $(document).ready(function() {
-        $('#kc-form-login').submit(function(e) {
-            e.preventDefault();
+$(document).ready(function() {
+    $('#kc-form-login').submit(function(e) {
+        e.preventDefault();
 
-            var username = $('#username').val();
-            var password = $('#password').val();
+        var username = $('#username').val();
+        var password = $('#password').val();
 
-            $.post(
-                "http://127.0.0.1:5000/auth",
-                { username: username, password: password },
-                function(response, status) {
-                    if (status === 'success') {
-                        window.location.href = "http://127.0.0.1:5000/login"; // redirect after success
-                    } else {
-                        alert("Login failed! Please try again.");
-                    }
+        $.post(
+            "/auth",  // ✅ relative URL instead of hardcoding
+            { username: username, password: password },
+            function(response, status) {
+                if (status === 'success') {
+                    window.location.href = "/login"; // ✅ relative redirect
+                } else {
+                    alert("Login failed! Please try again.");
                 }
-            ).fail(function() {
-                alert("Server error. Please try later.");
-            });
+            }
+        ).fail(function() {
+            alert("Server error. Please try again later.");
         });
     });
-    </script>
+});
+</script>
+
 
 </body>
 </html>
