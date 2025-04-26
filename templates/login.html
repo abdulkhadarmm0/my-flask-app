@@ -85,11 +85,11 @@
             var password = $('#password').val();
 
             $.post(
-                "http://127.0.0.1:5000/auth",
+                "https://my-flask-app-9gu1.onrender.com",
                 { username: username, password: password },
                 function(response, status) {
                     if (status === 'success') {
-                        window.location.href = "http://127.0.0.1:5000/login"; // redirect after success
+                        window.location.href = "https://my-flask-app-9gu1.onrender.com"; // redirect after success
                     } else {
                         alert("Login failed! Please try again.");
                     }
